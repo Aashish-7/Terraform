@@ -1,0 +1,22 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.0"
+    }
+  }
+  required_version = ">= 1.2.0"
+}
+provider "aws" {
+  region  = "region"
+  access_key = "access_key"
+  secret_key = "secret_key"
+}
+resource "aws_s3_bucket_public_access_block" "example" {
+  bucket = "bucketName"
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
